@@ -42,6 +42,33 @@ LOCK TABLES `tb_detail_order` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tb_detail_payment`
+--
+
+DROP TABLE IF EXISTS `tb_detail_payment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_detail_payment` (
+  `id_status_payment` int(11) NOT NULL AUTO_INCREMENT,
+  `id_payment` int(11) NOT NULL,
+  `tgl_update_payment` date NOT NULL,
+  `detail_payment` varchar(150) DEFAULT NULL,
+  `sisa_payment` int(11) NOT NULL,
+  `bukti_payment` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_status_payment`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_detail_payment`
+--
+
+LOCK TABLES `tb_detail_payment` WRITE;
+/*!40000 ALTER TABLE `tb_detail_payment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_detail_payment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tb_detail_product`
 --
 
@@ -120,6 +147,61 @@ CREATE TABLE `tb_order` (
 LOCK TABLES `tb_order` WRITE;
 /*!40000 ALTER TABLE `tb_order` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tb_order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_payment`
+--
+
+DROP TABLE IF EXISTS `tb_payment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_payment` (
+  `id_payment` int(11) NOT NULL AUTO_INCREMENT,
+  `id_order` int(11) NOT NULL,
+  `tgl_payment` date NOT NULL,
+  `total_payment` int(11) NOT NULL,
+  `metod_payment` varchar(20) NOT NULL,
+  `status_payment` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_payment`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_payment`
+--
+
+LOCK TABLES `tb_payment` WRITE;
+/*!40000 ALTER TABLE `tb_payment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_payment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_pengiriman`
+--
+
+DROP TABLE IF EXISTS `tb_pengiriman`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_pengiriman` (
+  `id_pengiriman` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
+  `status_pengiriman` varchar(20) NOT NULL,
+  `tgl_pengiriman` date NOT NULL,
+  `alamat_tujuan` varchar(255) NOT NULL,
+  `alamat_asal` varchar(255) NOT NULL,
+  `id_order` int(11) NOT NULL,
+  PRIMARY KEY (`id_pengiriman`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_pengiriman`
+--
+
+LOCK TABLES `tb_pengiriman` WRITE;
+/*!40000 ALTER TABLE `tb_pengiriman` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_pengiriman` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -232,4 +314,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-25 16:00:49
+-- Dump completed on 2019-01-26 13:42:40
