@@ -1,3 +1,9 @@
+## 25-26 january 2019##
+    update note:
+    * create new database base on sql
+    dev note:
+    * still don't know what dev doing
+
 ## 24 january 2019 ##
     file note:
     * creating public folder. This folder contain all current template
