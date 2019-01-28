@@ -1,4 +1,11 @@
-## 25-26 january 2019##
+## 29 january 2019 ##
+    update note:
+    * create class connection so we can edit it easly
+    * fix database again?
+    dev note:
+    * no dev note for now??
+
+## 25-26 january 2019 ##
     update note:
     * create new database base on sql
     dev note:
