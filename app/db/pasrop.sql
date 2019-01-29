@@ -207,6 +207,36 @@ LOCK TABLES `tb_payment` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tb_payment_user`
+--
+
+DROP TABLE IF EXISTS `tb_payment_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_payment_user` (
+  `id_payment_user` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
+  `tgl_dari` date NOT NULL,
+  `tgl_sampai` date NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `voucher` varchar(20) NOT NULL,
+  `metod_payment` varchar(20) NOT NULL,
+  `total_payment` int(11) NOT NULL,
+  PRIMARY KEY (`id_payment_user`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_payment_user`
+--
+
+LOCK TABLES `tb_payment_user` WRITE;
+/*!40000 ALTER TABLE `tb_payment_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_payment_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+--
 -- Table structure for table `tb_pengiriman`
 --
 
