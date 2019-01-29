@@ -16,6 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `tb_accounting`
+--
+
+DROP TABLE IF EXISTS `tb_accounting`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_accounting` (
+  `id_accounting` int(11) NOT NULL AUTO_INCREMENT,
+  `id_order` int(11) NOT NULL,
+  `pajak` int(11) NOT NULL,
+  `laba_rugi` int(11) NOT NULL,
+  `keterangan` text NOT NULL,
+  PRIMARY KEY (`id_accounting`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_accounting`
+--
+
+LOCK TABLES `tb_accounting` WRITE;
+/*!40000 ALTER TABLE `tb_accounting` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_accounting` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tb_detail_order`
 --
 
@@ -27,7 +53,7 @@ CREATE TABLE `tb_detail_order` (
   `id_order` int(11) NOT NULL,
   `id_product` int(11) NOT NULL,
   `jumlah_order` int(11) NOT NULL,
-  `harga` int(11) NOT NULL,
+  `total_harga` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_detail_order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -78,12 +104,15 @@ DROP TABLE IF EXISTS `tb_detail_product`;
 CREATE TABLE `tb_detail_product` (
   `id_detail_product` int(11) NOT NULL AUTO_INCREMENT,
   `id_product` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
+  `id_penerima` int(11) NOT NULL,
   `id_supplier` int(11) NOT NULL,
   `tgl_datang` date NOT NULL,
   `harga_beli` int(11) NOT NULL,
   `jumlah_product` int(11) NOT NULL,
   `jenis_satuan` varchar(20) NOT NULL,
+  `warna` varchar(20) NOT NULL,
+  `ukuran` varchar(20) NOT NULL,
+  `gender` tinyint(4) DEFAULT NULL,
   `status_product` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_detail_product`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -136,6 +165,7 @@ CREATE TABLE `tb_order` (
   `id_order` int(11) NOT NULL AUTO_INCREMENT,
   `tgl_order` date DEFAULT NULL,
   `status_order` varchar(150) NOT NULL,
+  `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -265,8 +295,10 @@ CREATE TABLE `tb_supplier` (
   `id_supplier` int(11) NOT NULL AUTO_INCREMENT,
   `nama_supplier` varchar(150) NOT NULL,
   `alamat_supplier` varchar(255) NOT NULL,
-  `wa_supplier` varchar(20) DEFAULT NULL,
+  `nomor_supplier` varchar(25) DEFAULT NULL,
   `detail_supplier` varchar(255) DEFAULT NULL,
+  `jenis_barang` varchar(255) NOT NULL,
+  `penjabaran_jenis` varchar(255) NOT NULL,
   `status_supplier` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_supplier`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -314,4 +346,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-26 13:42:40
+-- Dump completed on 2019-01-29 14:21:48
